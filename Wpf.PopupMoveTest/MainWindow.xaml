@@ -1,0 +1,41 @@
+﻿<Window
+    x:Class="Wpf.PopupMoveTest.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Wpf.PopupMoveTest"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Grid>
+        <ToggleButton
+            x:Name="toggleButton"
+            Width="100"
+            Height="30"
+            VerticalAlignment="Top"
+            Content="Show Popup" />
+        <Popup IsOpen="{Binding ElementName=toggleButton, Path=IsChecked}" Placement="Center">
+            <StackPanel Background="Black">
+                <Label Content="Popup Darg Move Test" Foreground="White" HorizontalAlignment="Center"/>
+                <Grid
+                    Width="300"
+                    Height="150"
+                    Background="Blue">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontSize="50"
+                        Foreground="White"
+                        Text="KJUN.KR"
+                        TextAlignment="Center" />
+                </Grid>
+            </StackPanel>
+            <behaviors:Interaction.Behaviors>
+                <local:DragMovePopupBehavior />
+            </behaviors:Interaction.Behaviors>
+        </Popup>
+    </Grid>
+</Window>
